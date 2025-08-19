@@ -56,4 +56,9 @@ class StudentController extends Controller
         }
         $student->courses()->detach($course->id);
     }
+    public function getallcourse(Student $student){
+        $courses = $student->courses()->get();
+        return response()->json($courses,200);
+    }
+
 }
