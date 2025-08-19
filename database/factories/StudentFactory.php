@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +18,10 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id'=> User::factory(),
             'code' => 'STU-' . $this->faker->unique()->numerify('#####'),
-            'first_name' => $this->faker->firstName(),
-            'last_name'  => $this->faker->lastName(),
             'gender'     => $this->faker->randomElement(['male', 'female']),
             'phone' => $this->faker->optional()->phoneNumber(),
-            'email' => $this->faker->optional()->safeEmail(),
             'address' => $this->faker->optional()->address(),
             'status'  => $this->faker->randomElement(['active', 'on_hold', 'withdrawn']),
         ];

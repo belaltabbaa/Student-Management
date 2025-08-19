@@ -13,14 +13,12 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->string('code')->unique();
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->enum('gender',['male','female']);
+            $table->enum('gender', ['male', 'female']);
             $table->string('phone')->nullable();
-            $table->string('email')->nullable();
             $table->string('address')->nullable();
-            $table->enum('status',['active','on_hold','withdrawn'])->default('active');
+            $table->enum('status', ['active', 'on_hold', 'withdrawn'])->default('active');
             $table->timestamps();
             $table->softDeletes();
         });

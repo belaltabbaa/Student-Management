@@ -11,12 +11,9 @@ class Student extends Model
     use SoftDeletes, HasFactory;
     protected $fillable = [
         'code',
-        'first_name',
-        'last_name',
         'gender',
         'phone',
         'status',
-        'email',
         'address',
     ];
     protected $table = 'students';
@@ -28,5 +25,12 @@ class Student extends Model
                 $student->code = 'STU-' . str_pad((Student::max('id') + 1), 5, '0', STR_PAD_LEFT);
             }
         });
+    }
+    public function courses(){
+        return $this->belongsToMany(Course::class,'course_student')->withPivot('status')->withTimestamps();
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

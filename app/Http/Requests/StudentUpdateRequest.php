@@ -22,14 +22,10 @@ class StudentUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => ['required', 'string', 'max:100'],
-            'last_name'  => ['required', 'string', 'max:100'],
-            'gender'     => ['required', 'in:male,female'],
+            'gender'     => ['in:male,female'],
             'phone'        => ['string'],
-            'contact_phone' => ['nullable', 'string', 'max:50'],
-            'email' => ['nullable', 'email', 'max:150'],
             'address' => ['nullable', 'string', 'max:255'],
-            'status'  => ['required', 'in:active,on_hold,withdrawn'],
+            'status'  => ['in:active,on_hold,withdrawn'],
         ];
     }
 }
