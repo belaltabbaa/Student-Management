@@ -18,4 +18,8 @@ class Course extends Model
     {
         return $this->belongsToMany(Student::class, 'course_student')->withPivot('status')->withTimestamps();
     }
+
+    public function attendances(){
+        return $this->hasMany(Attendance::class);
+    }
 }

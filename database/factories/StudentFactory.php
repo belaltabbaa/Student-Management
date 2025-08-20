@@ -23,7 +23,7 @@ class StudentFactory extends Factory
             'gender'     => $this->faker->randomElement(['male', 'female']),
             'phone' => $this->faker->optional()->phoneNumber(),
             'address' => $this->faker->optional()->address(),
-            'status'  => $this->faker->randomElement(['active', 'on_hold', 'withdrawn']),
+            'status'  => $this->faker->randomElement(['active', 'inactive', 'graduated']),
         ];
     }
 }

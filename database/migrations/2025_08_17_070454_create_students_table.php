@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->enum('status', ['active', 'on_hold', 'withdrawn'])->default('active');
+            $table->enum('status', ['active', 'inactive', 'graduated'])->default('active');
             $table->timestamps();
             $table->softDeletes();
         });
