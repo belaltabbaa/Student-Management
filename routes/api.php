@@ -20,9 +20,9 @@ Route::get('courses', [CourseController::class, 'index']);
 
 Route::middleware('auth:sanctum')->group(
     function () {
-        Route::post('/students/{student}/courses/{course}/register', [StudentController::class, 'registerStudentInCourse'])->middleware('IsAdmin');
+        Route::post('students/{student}/courses/{course}/register', [StudentController::class, 'registerStudentInCourse'])->middleware('IsAdmin');
 
-        Route::get('/student/{student}/courses', [StudentController::class, 'getallcourse'])->middleware('IsAdmin');
+        Route::get('student/{student}/courses', [StudentController::class, 'getallcourse'])->middleware('IsAdmin');
 
         Route::delete('students/{student}/courses/{course}', [StudentController::class, 'destroyStudentFromCourse'])->middleware('IsAdmin');
 
@@ -33,6 +33,10 @@ Route::middleware('auth:sanctum')->group(
         Route::get('attendance/student/{id}', [AttendancesController::class, 'studentAttendance']);
 
         Route::get('attendance/course/{id}', [AttendancesController::class, 'courseAttendance']);
+
+        Route::get('attendance/report/{student}/{course}', [AttendancesController::class,'studentReport']);
+
+        Route::get('attendance/report/{student}', [AttendancesController::class,'studentsReportForAllCourses']);
     }
 );
 
